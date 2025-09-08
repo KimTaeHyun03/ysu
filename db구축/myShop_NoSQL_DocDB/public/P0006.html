@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+ <html lang="ko">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>린넨 셔츠</title>
+     <style>
+         .linen-promo {
+             max-width: 1150px;
+             margin: 0 auto;
+             padding: 55px;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 25%, #f1f3f4 50%, #f8f9fa 75%, #ffffff 100%);
+             border-radius: 30px;
+             box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+             position: relative;
+             overflow: hidden;
+             color: #2c3e50;
+         }
+ 
+         .linen-promo::before {
+             content: ';
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="linen" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0,0 L4,4 M4,0 L0,4" stroke="rgba(108,117,125,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23linen)"/></svg>') repeat;
+             opacity: 0.6;
+             pointer-events: none;
+         }
+ 
+         .hero-banner {
+             text-align: center;
+             margin-bottom: 60px;
+             background: rgba(255,255,255,0.7);
+             padding: 50px;
+             border-radius: 25px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(255,255,255,0.5);
+             position: relative;
+             z-index: 1;
+             box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+         }
+ 
+         .natural-badge {
+             display: inline-block;
+             background: linear-gradient(135deg, #52c41a, #73d13d);
+             color: white;
+             padding: 10px 25px;
+             border-radius: 25px;
+             font-size: 0.95rem;
+             font-weight: 600;
+             margin-bottom: 25px;
+             box-shadow: 0 8px 20px rgba(82,196,26,0.3);
+             text-transform: uppercase;
+             letter-spacing: 1px;
+         }
+ 
+         .main-title {
+             font-size: 3.8rem;
+             font-weight: 900;
+             margin-bottom: 20px;
+             background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             text-shadow: 0 4px 8px rgba(44,62,80,0.2);
+             letter-spacing: -2px;
+         }
+ 
+         .subtitle {
+             font-size: 1.7rem;
+             color: #52c41a;
+             font-weight: 300;
+             margin-bottom: 30px;
+             font-style: italic;
+         }
+ 
+         .hero-description {
+             font-size: 1.4rem;
+             line-height: 1.8;
+             color: #495057;
+             max-width: 750px;
+             margin: 0 auto;
+         }
+ 
+         .natural-features {
+             margin-bottom: 55px;
+         }
+ 
+         .section-title {
+             font-size: 2.6rem;
+             font-weight: 800;
+             text-align: center;
+             margin-bottom: 45px;
+             color: #2c3e50;
+             position: relative;
+         }
+ 
+         .section-title::after {
+             content: ';
+             position: absolute;
+             bottom: -15px;
+             left: 50%;
+             transform: translateX(-50%);
+             width: 120px;
+             height: 4px;
+             background: linear-gradient(90deg, #52c41a, #73d13d, #52c41a);
+             border-radius: 2px;
+         }
+ 
+         .features-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+             gap: 35px;
+             margin-bottom: 50px;
+         }
+ 
+         .feature-card {
+             background: rgba(255,255,255,0.8);
+             padding: 40px;
+             border-radius: 25px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.6);
+             transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+             text-align: center;
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .feature-card::before {
+             content: ';
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(82,196,26,0.1), transparent);
+             transition: left 0.8s ease;
+         }
+ 
+         .feature-card:hover::before {
+             left: 100%;
+         }
+ 
+         .feature-card:hover {
+             transform: translateY(-15px) scale(1.02);
+             background: rgba(255,255,255,0.95);
+             box-shadow: 0 25px 60px rgba(82,196,26,0.15);
+         }
+ 
+         .feature-icon {
+             font-size: 4.2rem;
+             margin-bottom: 25px;
+             display: block;
+             filter: drop-shadow(0 4px 8px rgba(82,196,26,0.2));
+         }
+ 
+         .feature-title {
+             font-size: 1.7rem;
+             font-weight: 700;
+             margin-bottom: 20px;
+             color: #2c3e50;
+         }
+ 
+         .feature-description {
+             line-height: 1.7;
+             color: #6c757d;
+             font-size: 1.1rem;
+         }
+ 
+         .highlight {
+             background: linear-gradient(120deg, rgba(82,196,26,0.15) 0%, rgba(82,196,26,0.15) 100%);
+             padding: 4px 12px;
+             border-radius: 8px;
+             font-weight: 600;
+             color: #52c41a;
+         }
+ 
+         .breathable-section {
+             background: linear-gradient(135deg, rgba(82,196,26,0.08) 0%, rgba(115,209,61,0.05) 100%);
+             padding: 50px;
+             border-radius: 30px;
+             margin-bottom: 50px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(82,196,26,0.15);
+             text-align: center;
+         }
+ 
+         .breathable-title {
+             font-size: 2.9rem;
+             font-weight: 800;
+             margin-bottom: 30px;
+             color: #2c3e50;
+             text-shadow: 0 2px 4px rgba(82,196,26,0.1);
+         }
+ 
+         .breathable-description {
+             font-size: 1.4rem;
+             line-height: 1.8;
+             margin-bottom: 40px;
+             color: #495057;
+             max-width: 850px;
+             margin-left: auto;
+             margin-right: auto;
+         }
+ 
+         .breathable-benefits {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+             gap: 25px;
+             margin-top: 35px;
+         }
+ 
+         .breathable-item {
+             background: rgba(255,255,255,0.6);
+             padding: 25px;
+             border-radius: 20px;
+             transition: all 0.3s ease;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.4);
+         }
+ 
+         .breathable-item:hover {
+             background: rgba(255,255,255,0.8);
+             transform: scale(1.05);
+             box-shadow: 0 12px 30px rgba(82,196,26,0.15);
+         }
+ 
+         .breathable-icon {
+             font-size: 2.8rem;
+             margin-bottom: 15px;
+             display: block;
+         }
+ 
+         .breathable-text {
+             font-weight: 600;
+             font-size: 1.1rem;
+             color: #2c3e50;
+         }
+ 
+         .color-options {
+             background: rgba(255,255,255,0.6);
+             padding: 45px;
+             border-radius: 25px;
+             margin-bottom: 50px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.4);
+         }
+ 
+         .color-title {
+             font-size: 2.3rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 35px;
+             color: #2c3e50;
+         }
+ 
+         .color-description {
+             font-size: 1.3rem;
+             text-align: center;
+             margin-bottom: 40px;
+             color: #6c757d;
+             line-height: 1.6;
+         }
+ 
+         .color-showcase {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 40px;
+             flex-wrap: wrap;
+             margin-bottom: 30px;
+         }
+ 
+         .color-option {
+             text-align: center;
+             transition: all 0.3s ease;
+         }
+ 
+         .color-circle {
+             width: 120px;
+             height: 120px;
+             border-radius: 50%;
+             margin: 0 auto 15px;
+             position: relative;
+             cursor: pointer;
+             transition: all 0.3s ease;
+             box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+         }
+ 
+         .color-circle:hover {
+             transform: scale(1.1) rotate(5deg);
+             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+         }
+ 
+         .color-navy { background: linear-gradient(135deg, #2c3e50, #34495e); }
+         .color-white { background: linear-gradient(135deg, #ffffff, #f8f9fa); border: 2px solid #e9ecef; }
+ 
+         .color-name {
+             font-size: 1.2rem;
+             font-weight: 600;
+             color: #2c3e50;
+             margin-bottom: 8px;
+         }
+ 
+         .color-mood {
+             font-size: 0.95rem;
+             color: #6c757d;
+             font-style: italic;
+         }
+ 
+         .versatility-showcase {
+             background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%);
+             padding: 45px;
+             border-radius: 25px;
+             margin-bottom: 50px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(255,255,255,0.5);
+         }
+ 
+         .versatility-title {
+             font-size: 2.4rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 35px;
+             color: #2c3e50;
+         }
+ 
+         .season-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+             gap: 25px;
+             margin-bottom: 35px;
+         }
+ 
+         .season-card {
+             text-align: center;
+             padding: 35px 25px;
+             background: rgba(255,255,255,0.5);
+             border-radius: 20px;
+             transition: all 0.3s ease;
+             border: 1px solid rgba(255,255,255,0.4);
+         }
+ 
+         .season-card:hover {
+             background: rgba(255,255,255,0.7);
+             transform: translateY(-8px);
+             box-shadow: 0 15px 35px rgba(82,196,26,0.12);
+         }
+ 
+         .season-emoji {
+             font-size: 4rem;
+             margin-bottom: 20px;
+             display: block;
+         }
+ 
+         .season-name {
+             font-weight: 700;
+             font-size: 1.4rem;
+             margin-bottom: 12px;
+             color: #2c3e50;
+         }
+ 
+         .season-desc {
+             font-size: 1.05rem;
+             color: #6c757d;
+             line-height: 1.5;
+         }
+ 
+         .occasion-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+             gap: 20px;
+         }
+ 
+         .occasion-item {
+             text-align: center;
+             padding: 25px 15px;
+             background: rgba(82,196,26,0.05);
+             border-radius: 15px;
+             transition: all 0.3s ease;
+             border: 1px solid rgba(82,196,26,0.1);
+         }
+ 
+         .occasion-item:hover {
+             background: rgba(82,196,26,0.1);
+             transform: scale(1.05);
+         }
+ 
+         .occasion-emoji {
+             font-size: 2.5rem;
+             margin-bottom: 12px;
+             display: block;
+         }
+ 
+         .occasion-text {
+             font-weight: 600;
+             font-size: 1rem;
+             color: #2c3e50;
+         }
+ 
+         .natural-closing {
+             background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+             color: white;
+             padding: 50px;
+             border-radius: 30px;
+             text-align: center;
+             box-shadow: 0 20px 50px rgba(82,196,26,0.25);
+         }
+ 
+         .closing-title {
+             font-size: 2.7rem;
+             font-weight: 800;
+             margin-bottom: 25px;
+             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         }
+ 
+         .closing-description {
+             font-size: 1.4rem;
+             margin-bottom: 30px;
+             opacity: 0.95;
+             line-height: 1.6;
+         }
+ 
+         .closing-highlight {
+             font-size: 1.3rem;
+             font-weight: 600;
+             background: rgba(255,255,255,0.2);
+             padding: 20px 40px;
+             border-radius: 30px;
+             display: inline-block;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.3);
+         }
+ 
+         /* 반응형 디자인 */
+         @media (max-width: 768px) {
+             .linen-promo {
+                 padding: 40px;
+             }
+             
+             .hero-banner {
+                 padding: 40px;
+             }
+             
+             .main-title {
+                 font-size: 3rem;
+             }
+             
+             .subtitle {
+                 font-size: 1.5rem;
+             }
+             
+             .features-grid {
+                 grid-template-columns: 1fr;
+             }
+             
+             .breathable-benefits {
+                 grid-template-columns: repeat(2, 1fr);
+             }
+             
+             .color-showcase {
+                 gap: 25px;
+             }
+             
+             .color-circle {
+                 width: 90px;
+                 height: 90px;
+             }
+             
+             .season-grid {
+                 grid-template-columns: 1fr;
+             }
+             
+             .occasion-grid {
+                 grid-template-columns: repeat(2, 1fr);
+             }
+         }
+ 
+         /* 애니메이션 */
+         @keyframes natural-sway {
+             0%, 100% { transform: translateY(0px) rotate(0deg); }
+             50% { transform: translateY(-8px) rotate(2deg); }
+         }
+ 
+         .feature-icon {
+             animation: natural-sway 5s ease-in-out infinite;
+         }
+ 
+         .feature-card:nth-child(2) .feature-icon { animation-delay: 1.5s; }
+         .feature-card:nth-child(3) .feature-icon { animation-delay: 3s; }
+         .feature-card:nth-child(4) .feature-icon { animation-delay: 4.5s; }
+ 
+         @keyframes fadeInUp {
+             from {
+                 opacity: 0;
+                 transform: translateY(40px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+ 
+         .feature-card,
+         .breathable-section,
+         .color-options,
+         .versatility-showcase {
+             animation: fadeInUp 0.8s ease-out;
+         }
+ 
+         /* 린넨 텍스처 효과 */
+         .linen-texture {
+             position: relative;
+         }
+ 
+         .linen-texture::after {
+             content: ';
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect width="20" height="20" fill="none"/><path d="M0 0h20v20H0z" fill="none"/><circle cx="5" cy="5" r="0.5" fill="rgba(82,196,26,0.1)"/><circle cx="15" cy="15" r="0.3" fill="rgba(82,196,26,0.08)"/></svg>') repeat;
+             opacity: 0.4;
+             pointer-events: none;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="linen-promo">
+         <!-- 히어로 배너 -->
+         <div class="hero-banner">
+             <div class="natural-badge">100% Natural Linen</div>
+             <h1 class="main-title">린넨 셔츠</h1>
+             <p class="subtitle">자연이 선사하는 완벽한 편안함</p>
+             <p class="hero-description">
+                 천연 아마 섬유로 제작된 <strong>프리미엄 린넨 셔츠</strong>입니다. 
+                 자연스러운 통기성과 시원한 착용감으로 사계절 내내 편안하게 입을 수 있는 
+                 필수 아이템을 만나보세요.
+             </p>
+         </div>
+ 
+         <!-- 자연스러운 특징 -->
+         <div class="natural-features">
+             <h2 class="section-title">린넨만의 자연스러운 매력</h2>
+             
+             <div class="features-grid">
+                 <div class="feature-card linen-texture">
+                     <span class="feature-icon">🌱</span>
+                     <h3 class="feature-title">100% 천연 린넨</h3>
+                     <p class="feature-description">
+                         <span class="highlight">유럽산 최고급 아마</span>로만 제작된 순수 천연 소재입니다. 
+                         화학 처리 없이 자연 그대로의 특성을 살려 
+                         피부에 안전하고 환경에도 친화적입니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card linen-texture">
+                     <span class="feature-icon">💨</span>
+                     <h3 class="feature-title">뛰어난 통기성</h3>
+                     <p class="feature-description">
+                         린넨 특유의 <span class="highlight">자연스러운 통기성</span>으로 
+                         무더운 여름에도 시원하게 착용할 수 있습니다. 
+                         습기를 빠르게 흡수하고 방출하여 항상 쾌적함을 유지합니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card linen-texture">
+                     <span class="feature-icon">✨</span>
+                     <h3 class="feature-title">자연스러운 주름</h3>
+                     <p class="feature-description">
+                         린넨만의 <span class="highlight">내추럴한 주름</span>이 캐주얼하면서도 
+                         세련된 느낌을 연출합니다. 시간이 지날수록 더욱 부드러워지는 
+                         린넨의 특성으로 오래 입을수록 좋아집니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card linen-texture">
+                     <span class="feature-icon">🎯</span>
+                     <h3 class="feature-title">편안한 핏</h3>
+                     <p class="feature-description">
+                         <span class="highlight">여유로운 실루엣</span>으로 활동하기 편하면서도 
+                         스타일리시한 룩을 완성할 수 있습니다. 
+                         남녀 구분 없이 누구나 편안하게 착용 가능한 유니섹스 디자인입니다.
+                     </p>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 통기성 강조 -->
+         <div class="breathable-section">
+             <h2 class="breathable-title">여름을 위한 완벽한 선택</h2>
+             <p class="breathable-description">
+                 린넨은 <strong>자연이 만든 최고의 여름 소재</strong>입니다. 
+                 뛰어난 흡습성과 속건성으로 끈적한 여름날에도 쾌적함을 유지하며, 
+                 시간이 지날수록 더욱 부드러워지는 특별한 매력을 지니고 있습니다.
+             </p>
+             
+             <div class="breathable-benefits">
+                 <div class="breathable-item">
+                     <span class="breathable-icon">❄️</span>
+                     <div class="breathable-text">시원한 착용감</div>
+                 </div>
+                 <div class="breathable-item">
+                     <span class="breathable-icon">💧</span>
+                     <div class="breathable-text">빠른 흡습성</div>
+                 </div>
+                 <div class="breathable-item">
+                     <span class="breathable-icon">🌬️</span>
+                     <div class="breathable-text">우수한 통기성</div>
+                 </div>
+                 <div class="breathable-item">
+                     <span class="breathable-icon">🌿</span>
+                     <div class="breathable-text">항균 효과</div>
+                 </div>
+                 <div class="breathable-item">
+                     <span class="breathable-icon">⚡</span>
+                     <div class="breathable-text">속건성</div>
+                 </div>
+                 <div class="breathable-item">
+                     <span class="breathable-icon">🔄</span>
+                     <div class="breathable-text">내구성</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 컬러 옵션 -->
+         <div class="color-options">
+             <h2 class="color-title">클래식한 두 가지 컬러</h2>
+             <p class="color-description">
+                 어떤 스타일에도 완벽하게 어울리는 베이직한 컬러로 준비했습니다. 
+                 각각의 고유한 매력으로 다양한 분위기를 연출해보세요.
+             </p>
+             
+             <div class="color-showcase">
+                 <div class="color-option">
+                     <div class="color-circle color-navy"></div>
+                     <div class="color-name">네이비</div>
+                     <div class="color-mood">세련되고 차분한</div>
+                 </div>
+                 <div class="color-option">
+                     <div class="color-circle color-white"></div>
+                     <div class="color-name">화이트</div>
+                     <div class="color-mood">깔끔하고 시원한</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 다재다능한 활용도 -->
+         <div class="versatility-showcase">
+             <h2 class="versatility-title">사계절 내내, 어떤 상황에서나</h2>
+             
+             <div class="season-grid">
+                 <div class="season-card">
+                     <span class="season-emoji">🌸</span>
+                     <div class="season-name">봄</div>
+                     <div class="season-desc">가벼운 아우터와 레이어링하여 봄바람에 어울리는 내추럴 룩</div>
+                 </div>
+                 <div class="season-card">
+                     <span class="season-emoji">☀️</span>
+                     <div class="season-name">여름</div>
+                     <div class="season-desc">시원한 통기성으로 무더위를 이겨내는 최고의 선택</div>
+                 </div>
+                 <div class="season-card">
+                     <span class="season-emoji">🍂</span>
+                     <div class="season-name">가을</div>
+                     <div class="season-desc">니트나 가디건과 함께 따뜻하고 자연스러운 가을 스타일</div>
+                 </div>
+                 <div class="season-card">
+                     <span class="season-emoji">❄️</span>
+                     <div class="season-name">겨울</div>
+                     <div class="season-desc">두꺼운 아우터 안에 입는 베이스 레이어로 완벽</div>
+                 </div>
+             </div>
+ 
+             <div class="occasion-grid">
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🏖️</span>
+                     <div class="occasion-text">휴양지</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">☕</span>
+                     <div class="occasion-text">카페 데이트</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🌳</span>
+                     <div class="occasion-text">공원 산책</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🏠</span>
+                     <div class="occasion-text">홈웨어</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🎨</span>
+                     <div class="occasion-text">전시회</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🚲</span>
+                     <div class="occasion-text">라이딩</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 마무리 메시지 -->
+         <div class="natural-closing">
+             <h2 class="closing-title">자연과 하나 되는 편안함</h2>
+             <p class="closing-description">
+                 100% 천연 린넨이 선사하는 자연스러운 아름다움과 
+                 시원한 착용감을 경험해보세요
+             </p>
+             <div class="closing-highlight">
+                 🌿 자연이 만든 완벽한 소재, 린넨의 매력을 발견하세요 🌿
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>

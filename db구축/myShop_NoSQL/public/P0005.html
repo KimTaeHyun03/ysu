@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+ <html lang="ko">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>캐시미어 스웨터</title>
+     <style>
+         .cashmere-promo {
+             max-width: 1100px;
+             margin: 0 auto;
+             padding: 60px;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+             background: linear-gradient(135deg, #ffeef5 0%, #f8e8f0 25%, #e8dde6 50%, #f0e8ee 75%, #ffeef5 100%);
+             border-radius: 35px;
+             box-shadow: 0 35px 70px rgba(0,0,0,0.12);
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .cashmere-promo::before {
+             content: ';
+             position: absolute;
+             top: -50%;
+             left: -50%;
+             width: 200%;
+             height: 200%;
+             background: radial-gradient(circle, rgba(255,182,193,0.1) 0%, transparent 50%);
+             animation: soft-rotate 20s linear infinite;
+         }
+ 
+         @keyframes soft-rotate {
+             0% { transform: rotate(0deg); }
+             100% { transform: rotate(360deg); }
+         }
+ 
+         .hero-section {
+             text-align: center;
+             margin-bottom: 60px;
+             background: rgba(255,255,255,0.4);
+             padding: 50px;
+             border-radius: 30px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(255,255,255,0.3);
+             position: relative;
+             z-index: 1;
+             box-shadow: 0 15px 40px rgba(255,182,193,0.2);
+         }
+ 
+         .main-title {
+             font-size: 3.5rem;
+             font-weight: 900;
+             margin-bottom: 20px;
+             background: linear-gradient(135deg, #d63384 0%, #e91e63 50%, #ad1457 100%);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             text-shadow: 0 4px 8px rgba(214,51,132,0.3);
+             letter-spacing: -2px;
+         }
+ 
+         .luxury-badge {
+             display: inline-block;
+             background: linear-gradient(135deg, #d63384, #e91e63);
+             color: white;
+             padding: 8px 20px;
+             border-radius: 25px;
+             font-size: 0.9rem;
+             font-weight: 600;
+             margin-bottom: 25px;
+             box-shadow: 0 8px 20px rgba(214,51,132,0.3);
+             text-transform: uppercase;
+             letter-spacing: 1px;
+         }
+ 
+         .tagline {
+             font-size: 1.6rem;
+             color: #6c5ce7;
+             font-weight: 300;
+             margin-bottom: 30px;
+             font-style: italic;
+         }
+ 
+         .hero-description {
+             font-size: 1.3rem;
+             line-height: 1.8;
+             color: #495057;
+             max-width: 700px;
+             margin: 0 auto;
+         }
+ 
+         .premium-features {
+             margin-bottom: 55px;
+         }
+ 
+         .section-title {
+             font-size: 2.5rem;
+             font-weight: 800;
+             text-align: center;
+             margin-bottom: 45px;
+             color: #495057;
+             position: relative;
+         }
+ 
+         .section-title::after {
+             content: ';
+             position: absolute;
+             bottom: -15px;
+             left: 50%;
+             transform: translateX(-50%);
+             width: 120px;
+             height: 4px;
+             background: linear-gradient(90deg, #d63384, #e91e63, #d63384);
+             border-radius: 2px;
+         }
+ 
+         .features-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 35px;
+             margin-bottom: 50px;
+         }
+ 
+         .feature-card {
+             background: rgba(255,255,255,0.6);
+             padding: 40px;
+             border-radius: 25px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.4);
+             transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+             text-align: center;
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .feature-card::before {
+             content: ';
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(214,51,132,0.1), transparent);
+             transition: left 0.8s ease;
+         }
+ 
+         .feature-card:hover::before {
+             left: 100%;
+         }
+ 
+         .feature-card:hover {
+             transform: translateY(-15px) scale(1.02);
+             background: rgba(255,255,255,0.8);
+             box-shadow: 0 25px 60px rgba(214,51,132,0.25);
+         }
+ 
+         .feature-icon {
+             font-size: 4rem;
+             margin-bottom: 25px;
+             display: block;
+             filter: drop-shadow(0 4px 8px rgba(214,51,132,0.2));
+         }
+ 
+         .feature-title {
+             font-size: 1.6rem;
+             font-weight: 700;
+             margin-bottom: 20px;
+             color: #495057;
+         }
+ 
+         .feature-description {
+             line-height: 1.7;
+             color: #6c757d;
+             font-size: 1.1rem;
+         }
+ 
+         .highlight {
+             background: linear-gradient(120deg, rgba(214,51,132,0.15) 0%, rgba(214,51,132,0.15) 100%);
+             padding: 4px 12px;
+             border-radius: 8px;
+             font-weight: 600;
+             color: #d63384;
+         }
+ 
+         .luxury-showcase {
+             background: linear-gradient(135deg, rgba(214,51,132,0.1) 0%, rgba(233,30,99,0.05) 100%);
+             padding: 50px;
+             border-radius: 30px;
+             margin-bottom: 50px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(214,51,132,0.2);
+             text-align: center;
+         }
+ 
+         .luxury-title {
+             font-size: 2.8rem;
+             font-weight: 800;
+             margin-bottom: 30px;
+             color: #495057;
+             text-shadow: 0 2px 4px rgba(214,51,132,0.1);
+         }
+ 
+         .luxury-description {
+             font-size: 1.4rem;
+             line-height: 1.8;
+             margin-bottom: 40px;
+             color: #6c757d;
+             max-width: 800px;
+             margin-left: auto;
+             margin-right: auto;
+         }
+ 
+         .luxury-benefits {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+             gap: 25px;
+             margin-top: 35px;
+         }
+ 
+         .luxury-item {
+             background: rgba(255,255,255,0.5);
+             padding: 25px;
+             border-radius: 20px;
+             transition: all 0.3s ease;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.3);
+         }
+ 
+         .luxury-item:hover {
+             background: rgba(255,255,255,0.7);
+             transform: scale(1.05);
+             box-shadow: 0 12px 30px rgba(214,51,132,0.2);
+         }
+ 
+         .luxury-icon {
+             font-size: 2.5rem;
+             margin-bottom: 15px;
+             display: block;
+         }
+ 
+         .luxury-text {
+             font-weight: 600;
+             font-size: 1.1rem;
+             color: #495057;
+         }
+ 
+         .colorblock-section {
+             background: rgba(255,255,255,0.4);
+             padding: 45px;
+             border-radius: 25px;
+             margin-bottom: 50px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.3);
+         }
+ 
+         .colorblock-title {
+             font-size: 2.2rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 35px;
+             color: #495057;
+         }
+ 
+         .colorblock-description {
+             font-size: 1.2rem;
+             text-align: center;
+             margin-bottom: 35px;
+             color: #6c757d;
+             line-height: 1.6;
+         }
+ 
+         .color-showcase {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 30px;
+             flex-wrap: wrap;
+             margin-bottom: 30px;
+         }
+ 
+         .color-block {
+             width: 80px;
+             height: 80px;
+             border-radius: 20px;
+             position: relative;
+             cursor: pointer;
+             transition: all 0.3s ease;
+             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         }
+ 
+         .color-block:hover {
+             transform: scale(1.15) rotate(5deg);
+             box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+         }
+ 
+         .color-pink { background: linear-gradient(135deg, #ffb6c1, #ffc0cb); }
+         .color-black { background: linear-gradient(135deg, #2c3e50, #34495e); }
+         .color-gray { background: linear-gradient(135deg, #95a5a6, #bdc3c7); }
+ 
+         .color-label {
+             position: absolute;
+             bottom: -25px;
+             left: 50%;
+             transform: translateX(-50%);
+             font-size: 0.9rem;
+             font-weight: 600;
+             color: #6c757d;
+             white-space: nowrap;
+         }
+ 
+         .style-versatility {
+             background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%);
+             padding: 45px;
+             border-radius: 25px;
+             margin-bottom: 50px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(255,255,255,0.4);
+         }
+ 
+         .style-title {
+             font-size: 2.2rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 35px;
+             color: #495057;
+         }
+ 
+         .style-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 25px;
+         }
+ 
+         .style-item {
+             text-align: center;
+             padding: 30px 20px;
+             background: rgba(255,255,255,0.4);
+             border-radius: 20px;
+             transition: all 0.3s ease;
+             border: 1px solid rgba(255,255,255,0.3);
+         }
+ 
+         .style-item:hover {
+             background: rgba(255,255,255,0.6);
+             transform: translateY(-8px);
+             box-shadow: 0 15px 35px rgba(214,51,132,0.15);
+         }
+ 
+         .style-emoji {
+             font-size: 3.5rem;
+             margin-bottom: 20px;
+             display: block;
+         }
+ 
+         .style-name {
+             font-weight: 700;
+             font-size: 1.3rem;
+             margin-bottom: 12px;
+             color: #495057;
+         }
+ 
+         .style-desc {
+             font-size: 1rem;
+             color: #6c757d;
+             line-height: 1.5;
+         }
+ 
+         .closing-luxury {
+             background: linear-gradient(135deg, #d63384 0%, #e91e63 100%);
+             color: white;
+             padding: 50px;
+             border-radius: 30px;
+             text-align: center;
+             box-shadow: 0 20px 50px rgba(214,51,132,0.3);
+         }
+ 
+         .closing-title {
+             font-size: 2.5rem;
+             font-weight: 800;
+             margin-bottom: 25px;
+             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         }
+ 
+         .closing-description {
+             font-size: 1.3rem;
+             margin-bottom: 30px;
+             opacity: 0.95;
+             line-height: 1.6;
+         }
+ 
+         .closing-highlight {
+             font-size: 1.2rem;
+             font-weight: 600;
+             background: rgba(255,255,255,0.2);
+             padding: 20px 40px;
+             border-radius: 30px;
+             display: inline-block;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.3);
+         }
+ 
+         /* 반응형 디자인 */
+         @media (max-width: 768px) {
+             .cashmere-promo {
+                 padding: 40px;
+             }
+             
+             .hero-section {
+                 padding: 40px;
+             }
+             
+             .main-title {
+                 font-size: 2.8rem;
+             }
+             
+             .tagline {
+                 font-size: 1.4rem;
+             }
+             
+             .features-grid {
+                 grid-template-columns: 1fr;
+             }
+             
+             .luxury-benefits {
+                 grid-template-columns: repeat(2, 1fr);
+             }
+             
+             .color-showcase {
+                 gap: 20px;
+             }
+             
+             .color-block {
+                 width: 60px;
+                 height: 60px;
+             }
+             
+             .style-grid {
+                 grid-template-columns: 1fr;
+             }
+         }
+ 
+         /* 애니메이션 */
+         @keyframes gentle-bounce {
+             0%, 100% { transform: translateY(0px); }
+             50% { transform: translateY(-12px); }
+         }
+ 
+         .feature-icon {
+             animation: gentle-bounce 4s ease-in-out infinite;
+         }
+ 
+         .feature-card:nth-child(2) .feature-icon { animation-delay: 1s; }
+         .feature-card:nth-child(3) .feature-icon { animation-delay: 2s; }
+         .feature-card:nth-child(4) .feature-icon { animation-delay: 3s; }
+ 
+         @keyframes fadeInUp {
+             from {
+                 opacity: 0;
+                 transform: translateY(40px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+ 
+         .feature-card,
+         .luxury-showcase,
+         .colorblock-section,
+         .style-versatility {
+             animation: fadeInUp 0.8s ease-out;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="cashmere-promo">
+         <!-- 히어로 섹션 -->
+         <div class="hero-section">
+             <div class="luxury-badge">Premium Cashmere</div>
+             <h1 class="main-title">캐시미어 스웨터</h1>
+             <p class="tagline">럭셔리의 새로운 정의</p>
+             <p class="hero-description">
+                 최고급 캐시미어 원단으로 제작된 <strong>프리미엄 컬러블록 스웨터</strong>입니다. 
+                 부드러움과 따뜻함, 그리고 세련된 디자인이 만나 완성된 럭셔리 니트웨어의 걸작을 경험해보세요.
+             </p>
+         </div>
+ 
+         <!-- 프리미엄 특징 -->
+         <div class="premium-features">
+             <h2 class="section-title">캐시미어만의 특별함</h2>
+             
+             <div class="features-grid">
+                 <div class="feature-card">
+                     <span class="feature-icon">🌟</span>
+                     <h3 class="feature-title">100% 순수 캐시미어</h3>
+                     <p class="feature-description">
+                         <span class="highlight">몽골 고원의 최상급 캐시미어</span>만을 엄선하여 사용했습니다. 
+                         실크보다 부드럽고 따뜻한 천연 섬유의 극치를 느껴보세요. 
+                         한 번 입으면 잊을 수 없는 럭셔리한 촉감을 선사합니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">🎨</span>
+                     <h3 class="feature-title">모던 컬러블록</h3>
+                     <p class="feature-description">
+                         <span class="highlight">세련된 컬러블록 디자인</span>으로 클래식한 캐시미어에 
+                         현대적 감각을 더했습니다. 핑크, 블랙, 그레이의 조화로운 배색이 
+                         독특하면서도 우아한 스타일을 완성합니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">👗</span>
+                     <h3 class="feature-title">완벽한 핏</h3>
+                     <p class="feature-description">
+                         <span class="highlight">여성스러운 실루엣</span>을 살리는 세심한 패턴 설계로 
+                         몸매를 아름답게 연출합니다. 적당한 루즈함과 군더더기 없는 
+                         깔끔한 라인이 어떤 체형에도 완벽하게 어울립니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">✨</span>
+                     <h3 class="feature-title">프리미엄 퀄리티</h3>
+                     <p class="feature-description">
+                         <span class="highlight">정교한 핸드메이드 기법</span>으로 제작되어 
+                         최상의 품질을 보장합니다. 세심한 마감 처리와 내구성 있는 바느질로 
+                         오래도록 새것같은 상태를 유지할 수 있습니다.
+                     </p>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 럭셔리 경험 -->
+         <div class="luxury-showcase">
+             <h2 class="luxury-title">럭셔리의 새로운 경험</h2>
+             <p class="luxury-description">
+                 캐시미어 스웨터는 단순한 의류를 넘어선 <strong>라이프스타일의 상징</strong>입니다. 
+                 최고급 소재가 선사하는 극상의 편안함과 세련된 디자인으로 당신의 일상을 특별하게 만들어드립니다.
+             </p>
+             
+             <div class="luxury-benefits">
+                 <div class="luxury-item">
+                     <span class="luxury-icon">🌡️</span>
+                     <div class="luxury-text">완벽한 보온성</div>
+                 </div>
+                 <div class="luxury-item">
+                     <span class="luxury-icon">💨</span>
+                     <div class="luxury-text">뛰어난 통기성</div>
+                 </div>
+                 <div class="luxury-item">
+                     <span class="luxury-icon">🧸</span>
+                     <div class="luxury-text">실크보다 부드러움</div>
+                 </div>
+                 <div class="luxury-item">
+                     <span class="luxury-icon">💎</span>
+                     <div class="luxury-text">프리미엄 품질</div>
+                 </div>
+                 <div class="luxury-item">
+                     <span class="luxury-icon">🔄</span>
+                     <div class="luxury-text">형태 유지력</div>
+                 </div>
+                 <div class="luxury-item">
+                     <span class="luxury-icon">✨</span>
+                     <div class="luxury-text">고급스러운 광택</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 컬러블록 디자인 -->
+         <div class="colorblock-section">
+             <h2 class="colorblock-title">아름다운 컬러 하모니</h2>
+             <p class="colorblock-description">
+                 세 가지 색상의 완벽한 조화로 만들어진 독창적인 디자인입니다. 
+                 각 컬러가 지닌 고유한 매력이 어우러져 하나의 예술 작품을 완성합니다.
+             </p>
+             
+             <div class="color-showcase">
+                 <div class="color-block color-pink">
+                     <div class="color-label">소프트 핑크</div>
+                 </div>
+                 <div class="color-block color-black">
+                     <div class="color-label">딥 블랙</div>
+                 </div>
+                 <div class="color-block color-gray">
+                     <div class="color-label">라이트 그레이</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 스타일 다양성 -->
+         <div class="style-versatility">
+             <h2 class="style-title">무한한 스타일링 가능성</h2>
+             
+             <div class="style-grid">
+                 <div class="style-item">
+                     <span class="style-emoji">💼</span>
+                     <div class="style-name">오피스 룩</div>
+                     <div class="style-desc">세련된 비즈니스 캐주얼</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🌸</span>
+                     <div class="style-name">데이트 룩</div>
+                     <div class="style-desc">로맨틱하고 우아한 스타일</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">☕</span>
+                     <div class="style-name">카페 룩</div>
+                     <div class="style-desc">편안하면서도 시크한 일상복</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🎭</span>
+                     <div class="style-name">파티 룩</div>
+                     <div class="style-desc">독특하고 세련된 모임복</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🛍️</span>
+                     <div class="style-name">쇼핑 룩</div>
+                     <div class="style-desc">편안하고 스타일리시한 외출복</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🏠</span>
+                     <div class="style-name">홈 룩</div>
+                     <div class="style-desc">럭셔리한 홈웨어</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 마무리 메시지 -->
+         <div class="closing-luxury">
+             <h2 class="closing-title">진정한 럭셔리를 경험하세요</h2>
+             <p class="closing-description">
+                 최고급 캐시미어가 선사하는 극상의 편안함과 
+                 모던한 디자인의 완벽한 만남
+             </p>
+             <div class="closing-highlight">
+                 💝 당신만을 위한 특별한 럭셔리, 캐시미어 스웨터 💝
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>

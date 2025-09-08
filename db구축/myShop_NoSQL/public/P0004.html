@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+ <html lang="ko">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>와이드 슬랙스</title>
+     <style>
+         .slacks-promo {
+             max-width: 1000px;
+             margin: 0 auto;
+             padding: 50px;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+             background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+             color: #ecf0f1;
+             border-radius: 30px;
+             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .slacks-promo::before {
+             content: ';
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="80" cy="80" r="0.3" fill="rgba(255,255,255,0.02)"/><circle cx="40" cy="70" r="0.4" fill="rgba(255,255,255,0.025)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+             opacity: 0.6;
+             pointer-events: none;
+         }
+ 
+         .hero-section {
+             text-align: center;
+             margin-bottom: 55px;
+             background: rgba(255,255,255,0.05);
+             padding: 45px;
+             border-radius: 25px;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.1);
+             position: relative;
+             z-index: 1;
+         }
+ 
+         .main-title {
+             font-size: 3.2rem;
+             font-weight: 900;
+             margin-bottom: 20px;
+             text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+             letter-spacing: -1.5px;
+             background: linear-gradient(135deg, #bdc3c7 0%, #ecf0f1 50%, #bdc3c7 100%);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+         }
+ 
+         .tagline {
+             font-size: 1.5rem;
+             font-weight: 300;
+             margin-bottom: 25px;
+             opacity: 0.9;
+             font-style: italic;
+             color: #bdc3c7;
+         }
+ 
+         .hero-description {
+             font-size: 1.3rem;
+             line-height: 1.8;
+             max-width: 650px;
+             margin: 0 auto;
+             color: #ecf0f1;
+             opacity: 0.95;
+         }
+ 
+         .features-wrapper {
+             margin-bottom: 50px;
+         }
+ 
+         .section-title {
+             font-size: 2.3rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 40px;
+             position: relative;
+             color: #ecf0f1;
+         }
+ 
+         .section-title::after {
+             content: ';
+             position: absolute;
+             bottom: -12px;
+             left: 50%;
+             transform: translateX(-50%);
+             width: 100px;
+             height: 4px;
+             background: linear-gradient(90deg, #bdc3c7, #ecf0f1, #bdc3c7);
+             border-radius: 2px;
+         }
+ 
+         .features-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+             gap: 30px;
+             margin-bottom: 45px;
+         }
+ 
+         .feature-card {
+             background: rgba(255,255,255,0.08);
+             padding: 35px;
+             border-radius: 20px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.15);
+             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+             text-align: center;
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .feature-card::before {
+             content: ';
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+             transition: left 0.6s ease;
+         }
+ 
+         .feature-card:hover::before {
+             left: 100%;
+         }
+ 
+         .feature-card:hover {
+             transform: translateY(-12px) scale(1.03);
+             background: rgba(255,255,255,0.12);
+             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+         }
+ 
+         .feature-icon {
+             font-size: 3.5rem;
+             margin-bottom: 25px;
+             display: block;
+             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+         }
+ 
+         .feature-title {
+             font-size: 1.5rem;
+             font-weight: 700;
+             margin-bottom: 18px;
+             color: #ecf0f1;
+             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+         }
+ 
+         .feature-description {
+             line-height: 1.7;
+             color: #bdc3c7;
+             font-size: 1.05rem;
+         }
+ 
+         .highlight {
+             background: rgba(189,195,199,0.3);
+             padding: 3px 10px;
+             border-radius: 8px;
+             font-weight: 600;
+             color: #ecf0f1;
+             text-shadow: none;
+         }
+ 
+         .professional-section {
+             background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+             padding: 45px;
+             border-radius: 25px;
+             margin-bottom: 45px;
+             backdrop-filter: blur(20px);
+             border: 1px solid rgba(255,255,255,0.2);
+             text-align: center;
+         }
+ 
+         .professional-title {
+             font-size: 2.4rem;
+             font-weight: 800;
+             margin-bottom: 30px;
+             color: #ecf0f1;
+             text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+         }
+ 
+         .professional-description {
+             font-size: 1.25rem;
+             line-height: 1.8;
+             margin-bottom: 35px;
+             color: #bdc3c7;
+             max-width: 750px;
+             margin-left: auto;
+             margin-right: auto;
+         }
+ 
+         .professional-features {
+             display: flex;
+             justify-content: center;
+             flex-wrap: wrap;
+             gap: 25px;
+         }
+ 
+         .professional-item {
+             display: flex;
+             align-items: center;
+             gap: 12px;
+             background: rgba(255,255,255,0.1);
+             padding: 15px 25px;
+             border-radius: 30px;
+             backdrop-filter: blur(10px);
+             transition: all 0.3s ease;
+             border: 1px solid rgba(255,255,255,0.15);
+         }
+ 
+         .professional-item:hover {
+             background: rgba(255,255,255,0.15);
+             transform: scale(1.08);
+             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+         }
+ 
+         .professional-icon {
+             font-size: 1.8rem;
+         }
+ 
+         .professional-text {
+             font-weight: 600;
+             font-size: 1rem;
+             color: #ecf0f1;
+         }
+ 
+         .versatility-section {
+             background: rgba(255,255,255,0.06);
+             padding: 45px;
+             border-radius: 25px;
+             margin-bottom: 45px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.1);
+         }
+ 
+         .versatility-title {
+             font-size: 2rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 35px;
+             color: #ecf0f1;
+         }
+ 
+         .occasion-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+             gap: 25px;
+         }
+ 
+         .occasion-item {
+             text-align: center;
+             padding: 30px 20px;
+             background: rgba(255,255,255,0.05);
+             border-radius: 18px;
+             transition: all 0.3s ease;
+             border: 1px solid rgba(255,255,255,0.1);
+         }
+ 
+         .occasion-item:hover {
+             background: rgba(255,255,255,0.1);
+             transform: translateY(-8px);
+             box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+         }
+ 
+         .occasion-emoji {
+             font-size: 3rem;
+             margin-bottom: 18px;
+             display: block;
+         }
+ 
+         .occasion-name {
+             font-weight: 700;
+             font-size: 1.2rem;
+             margin-bottom: 10px;
+             color: #ecf0f1;
+         }
+ 
+         .occasion-desc {
+             font-size: 0.95rem;
+             color: #bdc3c7;
+             line-height: 1.5;
+         }
+ 
+         .closing-statement {
+             background: linear-gradient(135deg, rgba(189,195,199,0.15) 0%, rgba(236,240,241,0.1) 100%);
+             padding: 40px;
+             border-radius: 25px;
+             text-align: center;
+             backdrop-filter: blur(20px);
+             border: 2px solid rgba(255,255,255,0.2);
+         }
+ 
+         .closing-title {
+             font-size: 2rem;
+             font-weight: 700;
+             margin-bottom: 20px;
+             color: #ecf0f1;
+             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+         }
+ 
+         .closing-description {
+             font-size: 1.2rem;
+             margin-bottom: 25px;
+             color: #bdc3c7;
+             line-height: 1.6;
+         }
+ 
+         .closing-highlight {
+             font-size: 1.1rem;
+             font-weight: 600;
+             background: rgba(189,195,199,0.25);
+             padding: 15px 30px;
+             border-radius: 30px;
+             display: inline-block;
+             color: #ecf0f1;
+             border: 1px solid rgba(255,255,255,0.2);
+         }
+ 
+         /* 반응형 디자인 */
+         @media (max-width: 768px) {
+             .slacks-promo {
+                 padding: 35px;
+             }
+             
+             .hero-section {
+                 padding: 35px;
+             }
+             
+             .main-title {
+                 font-size: 2.5rem;
+             }
+             
+             .tagline {
+                 font-size: 1.3rem;
+             }
+             
+             .features-grid {
+                 grid-template-columns: 1fr;
+             }
+             
+             .professional-features {
+                 flex-direction: column;
+                 align-items: center;
+             }
+             
+             .occasion-grid {
+                 grid-template-columns: repeat(2, 1fr);
+             }
+         }
+ 
+         /* 애니메이션 */
+         @keyframes subtle-float {
+             0%, 100% { transform: translateY(0px); }
+             50% { transform: translateY(-8px); }
+         }
+ 
+         .feature-icon {
+             animation: subtle-float 4s ease-in-out infinite;
+         }
+ 
+         .feature-card:nth-child(2) .feature-icon { animation-delay: 1s; }
+         .feature-card:nth-child(3) .feature-icon { animation-delay: 2s; }
+         .feature-card:nth-child(4) .feature-icon { animation-delay: 3s; }
+ 
+         @keyframes fadeInScale {
+             from {
+                 opacity: 0;
+                 transform: scale(0.9) translateY(30px);
+             }
+             to {
+                 opacity: 1;
+                 transform: scale(1) translateY(0);
+             }
+         }
+ 
+         .feature-card,
+         .professional-section,
+         .versatility-section {
+             animation: fadeInScale 0.8s ease-out;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="slacks-promo">
+         <!-- 히어로 섹션 -->
+         <div class="hero-section">
+             <h1 class="main-title">와이드 슬랙스</h1>
+             <p class="tagline">모던 프로페셔널의 새로운 기준</p>
+             <p class="hero-description">
+                 클래식한 정장의 품격과 현대적인 편안함이 만나 탄생한 
+                 <strong>프리미엄 와이드 슬랙스</strong>입니다. 
+                 세련된 실루엣과 완벽한 착용감으로 당신의 품격을 한층 더 높여드립니다.
+             </p>
+         </div>
+ 
+         <!-- 핵심 특징 -->
+         <div class="features-wrapper">
+             <h2 class="section-title">와이드 슬랙스만의 특별함</h2>
+             
+             <div class="features-grid">
+                 <div class="feature-card">
+                     <span class="feature-icon">👔</span>
+                     <h3 class="feature-title">클래식 와이드 핏</h3>
+                     <p class="feature-description">
+                         <span class="highlight">여유로운 와이드 실루엣</span>으로 자연스러운 드레이프를 연출하며, 
+                         클래식한 정장 스타일의 품격을 완벽하게 표현합니다. 
+                         움직임이 자유롭고 우아한 착용감을 제공합니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">🏆</span>
+                     <h3 class="feature-title">프리미엄 원단</h3>
+                     <p class="feature-description">
+                         <span class="highlight">고급 울 혼방 소재</span>로 제작되어 뛰어난 형태 보존력과 
+                         부드러운 촉감을 자랑합니다. 구김이 잘 생기지 않아 
+                         하루 종일 깔끔한 실루엣을 유지할 수 있습니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">✨</span>
+                     <h3 class="feature-title">타임리스 디자인</h3>
+                     <p class="feature-description">
+                         시간이 흘러도 변하지 않는 <span class="highlight">클래식한 매력</span>과 
+                         현대적 감각이 조화된 디자인입니다. 
+                         유행을 타지 않는 세련된 스타일로 오래도록 착용할 수 있습니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">🎯</span>
+                     <h3 class="feature-title">완벽한 디테일</h3>
+                     <p class="feature-description">
+                         정교한 재봉 기술과 <span class="highlight">세심한 마감 처리</span>로 
+                         프리미엄 슬랙스의 품질을 보장합니다. 
+                         핀턱과 허리 라인이 완벽하게 설계되어 있습니다.
+                     </p>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 프로페셔널 강조 -->
+         <div class="professional-section">
+             <h2 class="professional-title">프로페셔널을 위한 완벽한 선택</h2>
+             <p class="professional-description">
+                 비즈니스 미팅부터 중요한 프레젠테이션까지, 
+                 <strong>당신의 전문성을 돋보이게 하는</strong> 필수 아이템입니다. 
+                 자신감 있는 모습으로 어떤 상황에서도 완벽한 인상을 남기세요.
+             </p>
+             
+             <div class="professional-features">
+                 <div class="professional-item">
+                     <span class="professional-icon">💼</span>
+                     <span class="professional-text">비즈니스 미팅</span>
+                 </div>
+                 <div class="professional-item">
+                     <span class="professional-icon">🎤</span>
+                     <span class="professional-text">프레젠테이션</span>
+                 </div>
+                 <div class="professional-item">
+                     <span class="professional-icon">🤝</span>
+                     <span class="professional-text">네트워킹</span>
+                 </div>
+                 <div class="professional-item">
+                     <span class="professional-icon">📊</span>
+                     <span class="professional-text">중요 행사</span>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 다양한 활용도 -->
+         <div class="versatility-section">
+             <h2 class="versatility-title">다양한 상황에서의 완벽한 연출</h2>
+             
+             <div class="occasion-grid">
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🏢</span>
+                     <div class="occasion-name">오피스룩</div>
+                     <div class="occasion-desc">세련되고 전문적인 업무 스타일</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🍽️</span>
+                     <div class="occasion-name">비즈니스 디너</div>
+                     <div class="occasion-desc">격식 있는 식사 자리에서</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🎭</span>
+                     <div class="occasion-name">문화 행사</div>
+                     <div class="occasion-desc">공연, 전시회 등 문화 활동</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">💒</span>
+                     <div class="occasion-name">특별한 날</div>
+                     <div class="occasion-desc">결혼식, 기념일 등</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">🌆</span>
+                     <div class="occasion-name">세미 포멀</div>
+                     <div class="occasion-desc">격식을 차린 모임</div>
+                 </div>
+                 <div class="occasion-item">
+                     <span class="occasion-emoji">✈️</span>
+                     <div class="occasion-name">출장</div>
+                     <div class="occasion-desc">편안하면서도 단정한 여행복</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 마무리 메시지 -->
+         <div class="closing-statement">
+             <h2 class="closing-title">품격 있는 당신을 위한 완벽한 선택</h2>
+             <p class="closing-description">
+                 진정한 클래식의 가치를 아는 당신에게 
+                 최고급 와이드 슬랙스를 선사합니다
+             </p>
+             <div class="closing-highlight">
+                 🎩 타임리스한 우아함, 모던한 편안함의 완벽한 조화 🎩
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+ <html lang="ko">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>오버사이즈 후드티</title>
+     <style>
+         .hoodie-promo {
+             max-width: 950px;
+             margin: 0 auto;
+             padding: 45px;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             border-radius: 25px;
+             box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+             color: white;
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .hoodie-promo::before {
+             content: ';
+             position: absolute;
+             top: -50%;
+             right: -50%;
+             width: 100%;
+             height: 100%;
+             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+             border-radius: 50%;
+         }
+ 
+         .hero-banner {
+             text-align: center;
+             margin-bottom: 50px;
+             background: rgba(255,255,255,0.1);
+             padding: 40px;
+             border-radius: 20px;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.2);
+             position: relative;
+             z-index: 1;
+         }
+ 
+         .main-title {
+             font-size: 3rem;
+             font-weight: 900;
+             margin-bottom: 15px;
+             text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+             letter-spacing: -1px;
+         }
+ 
+         .subtitle {
+             font-size: 1.4rem;
+             opacity: 0.9;
+             font-weight: 300;
+             margin-bottom: 20px;
+             font-style: italic;
+         }
+ 
+         .hero-description {
+             font-size: 1.2rem;
+             line-height: 1.7;
+             opacity: 0.95;
+             max-width: 600px;
+             margin: 0 auto;
+         }
+ 
+         .features-section {
+             margin-bottom: 45px;
+         }
+ 
+         .section-title {
+             font-size: 2rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 35px;
+             position: relative;
+         }
+ 
+         .section-title::after {
+             content: ';
+             position: absolute;
+             bottom: -10px;
+             left: 50%;
+             transform: translateX(-50%);
+             width: 80px;
+             height: 4px;
+             background: rgba(255,255,255,0.8);
+             border-radius: 2px;
+         }
+ 
+         .features-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 25px;
+             margin-bottom: 40px;
+         }
+ 
+         .feature-card {
+             background: rgba(255,255,255,0.15);
+             padding: 30px;
+             border-radius: 18px;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.2);
+             transition: all 0.4s ease;
+             text-align: center;
+             position: relative;
+             overflow: hidden;
+         }
+ 
+         .feature-card::before {
+             content: ';
+             position: absolute;
+             top: -50%;
+             left: -50%;
+             width: 200%;
+             height: 200%;
+             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+             transform: translateX(-100%) translateY(-100%) rotate(45deg);
+             transition: transform 0.6s ease;
+         }
+ 
+         .feature-card:hover::before {
+             transform: translateX(100%) translateY(100%) rotate(45deg);
+         }
+ 
+         .feature-card:hover {
+             transform: translateY(-10px) scale(1.02);
+             background: rgba(255,255,255,0.25);
+             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+         }
+ 
+         .feature-icon {
+             font-size: 3rem;
+             margin-bottom: 20px;
+             display: block;
+             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+         }
+ 
+         .feature-title {
+             font-size: 1.4rem;
+             font-weight: 700;
+             margin-bottom: 15px;
+             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         }
+ 
+         .feature-description {
+             line-height: 1.6;
+             opacity: 0.9;
+             font-size: 1rem;
+         }
+ 
+         .highlight {
+             background: rgba(255,255,255,0.3);
+             padding: 3px 8px;
+             border-radius: 6px;
+             font-weight: 600;
+             text-shadow: none;
+         }
+ 
+         .comfort-showcase {
+             background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+             padding: 40px;
+             border-radius: 20px;
+             text-align: center;
+             margin-bottom: 40px;
+             backdrop-filter: blur(15px);
+             border: 1px solid rgba(255,255,255,0.3);
+         }
+ 
+         .comfort-title {
+             font-size: 2.2rem;
+             font-weight: 800;
+             margin-bottom: 25px;
+             text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+         }
+ 
+         .comfort-description {
+             font-size: 1.2rem;
+             line-height: 1.7;
+             opacity: 0.95;
+             max-width: 700px;
+             margin: 0 auto 30px;
+         }
+ 
+         .comfort-features {
+             display: flex;
+             justify-content: center;
+             flex-wrap: wrap;
+             gap: 30px;
+             margin-top: 25px;
+         }
+ 
+         .comfort-item {
+             display: flex;
+             align-items: center;
+             gap: 10px;
+             background: rgba(255,255,255,0.2);
+             padding: 12px 20px;
+             border-radius: 25px;
+             backdrop-filter: blur(10px);
+             transition: all 0.3s ease;
+         }
+ 
+         .comfort-item:hover {
+             background: rgba(255,255,255,0.3);
+             transform: scale(1.05);
+         }
+ 
+         .comfort-icon {
+             font-size: 1.5rem;
+         }
+ 
+         .comfort-text {
+             font-weight: 600;
+             font-size: 0.95rem;
+         }
+ 
+         .style-section {
+             background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+             padding: 40px;
+             border-radius: 20px;
+             margin-bottom: 40px;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255,255,255,0.2);
+         }
+ 
+         .style-title {
+             font-size: 1.8rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 25px;
+         }
+ 
+         .style-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+             gap: 20px;
+         }
+ 
+         .style-item {
+             text-align: center;
+             padding: 25px 15px;
+             background: rgba(255,255,255,0.1);
+             border-radius: 15px;
+             transition: all 0.3s ease;
+         }
+ 
+         .style-item:hover {
+             background: rgba(255,255,255,0.2);
+             transform: translateY(-5px);
+         }
+ 
+         .style-emoji {
+             font-size: 2.5rem;
+             margin-bottom: 15px;
+             display: block;
+         }
+ 
+         .style-name {
+             font-weight: 600;
+             font-size: 1.1rem;
+             margin-bottom: 8px;
+         }
+ 
+         .style-desc {
+             font-size: 0.9rem;
+             opacity: 0.8;
+         }
+ 
+         .closing-cta {
+             background: rgba(255,255,255,0.2);
+             padding: 35px;
+             border-radius: 20px;
+             text-align: center;
+             backdrop-filter: blur(15px);
+             border: 2px solid rgba(255,255,255,0.3);
+         }
+ 
+         .cta-title {
+             font-size: 1.8rem;
+             font-weight: 700;
+             margin-bottom: 15px;
+             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         }
+ 
+         .cta-description {
+             font-size: 1.1rem;
+             opacity: 0.9;
+             margin-bottom: 20px;
+         }
+ 
+         .cta-highlight {
+             font-size: 1rem;
+             font-weight: 600;
+             background: rgba(255,255,255,0.3);
+             padding: 10px 20px;
+             border-radius: 25px;
+             display: inline-block;
+             margin-top: 10px;
+         }
+ 
+         /* 반응형 디자인 */
+         @media (max-width: 768px) {
+             .hoodie-promo {
+                 padding: 30px;
+             }
+             
+             .hero-banner {
+                 padding: 30px;
+             }
+             
+             .main-title {
+                 font-size: 2.2rem;
+             }
+             
+             .subtitle {
+                 font-size: 1.2rem;
+             }
+             
+             .features-grid {
+                 grid-template-columns: 1fr;
+             }
+             
+             .comfort-features {
+                 flex-direction: column;
+                 align-items: center;
+             }
+             
+             .style-grid {
+                 grid-template-columns: repeat(2, 1fr);
+             }
+         }
+ 
+         /* 애니메이션 */
+         @keyframes float {
+             0%, 100% { transform: translateY(0px); }
+             50% { transform: translateY(-10px); }
+         }
+ 
+         .feature-icon {
+             animation: float 3s ease-in-out infinite;
+         }
+ 
+         .feature-card:nth-child(2) .feature-icon { animation-delay: 0.5s; }
+         .feature-card:nth-child(3) .feature-icon { animation-delay: 1s; }
+         .feature-card:nth-child(4) .feature-icon { animation-delay: 1.5s; }
+ 
+         @keyframes fadeInUp {
+             from {
+                 opacity: 0;
+                 transform: translateY(40px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+ 
+         .feature-card,
+         .comfort-showcase,
+         .style-section {
+             animation: fadeInUp 0.8s ease-out;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="hoodie-promo">
+         <!-- 히어로 배너 -->
+         <div class="hero-banner">
+             <h1 class="main-title">오버사이즈 후드티</h1>
+             <p class="subtitle">편안함과 스타일의 완벽한 조화</p>
+             <p class="hero-description">
+                 여유로운 핏과 부드러운 착용감으로 일상의 모든 순간을 특별하게 만들어주는 
+                 <strong>프리미엄 오버사이즈 후드티</strong>입니다.
+             </p>
+         </div>
+ 
+         <!-- 핵심 특징 -->
+         <div class="features-section">
+             <h2 class="section-title">이런 점이 특별합니다</h2>
+             
+             <div class="features-grid">
+                 <div class="feature-card">
+                     <span class="feature-icon">🤗</span>
+                     <h3 class="feature-title">오버사이즈 핏</h3>
+                     <p class="feature-description">
+                         <span class="highlight">여유로운 실루엣</span>으로 자유롭고 편안한 착용감을 제공합니다. 
+                         남녀노소 누구나 부담 없이 입을 수 있는 트렌디한 오버핏 디자인입니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">☁️</span>
+                     <h3 class="feature-title">프리미엄 소재</h3>
+                     <p class="feature-description">
+                         <span class="highlight">고급 면 혼방 소재</span>로 제작되어 부드럽고 따뜻한 착용감을 선사합니다. 
+                         내구성이 뛰어나 오래도록 변형 없이 착용할 수 있습니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">🎨</span>
+                     <h3 class="feature-title">미니멀 디자인</h3>
+                     <p class="feature-description">
+                         깔끔하고 <span class="highlight">심플한 디자인</span>으로 어떤 스타일과도 완벽하게 어울립니다. 
+                         시간이 지나도 질리지 않는 클래식한 매력을 지니고 있습니다.
+                     </p>
+                 </div>
+                 
+                 <div class="feature-card">
+                     <span class="feature-icon">🌈</span>
+                     <h3 class="feature-title">다양한 활용</h3>
+                     <p class="feature-description">
+                         홈웨어부터 스트릿 룩까지 <span class="highlight">무한한 스타일링</span>이 가능합니다. 
+                         계절과 상관없이 레이어링 아이템으로도 완벽합니다.
+                     </p>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 편안함 강조 -->
+         <div class="comfort-showcase">
+             <h2 class="comfort-title">궁극의 편안함을 경험하세요</h2>
+             <p class="comfort-description">
+                 하루 종일 입고 있어도 전혀 부담스럽지 않은 <strong>최고의 편안함</strong>을 제공합니다. 
+                 집에서 휴식할 때부터 외출할 때까지, 언제나 당신과 함께하는 완벽한 동반자입니다.
+             </p>
+             
+             <div class="comfort-features">
+                 <div class="comfort-item">
+                     <span class="comfort-icon">🛡️</span>
+                     <span class="comfort-text">보온성</span>
+                 </div>
+                 <div class="comfort-item">
+                     <span class="comfort-icon">💨</span>
+                     <span class="comfort-text">통기성</span>
+                 </div>
+                 <div class="comfort-item">
+                     <span class="comfort-icon">🧸</span>
+                     <span class="comfort-text">부드러움</span>
+                 </div>
+                 <div class="comfort-item">
+                     <span class="comfort-icon">💪</span>
+                     <span class="comfort-text">내구성</span>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 스타일링 제안 -->
+         <div class="style-section">
+             <h2 class="style-title">이렇게 스타일링해보세요</h2>
+             
+             <div class="style-grid">
+                 <div class="style-item">
+                     <span class="style-emoji">🏠</span>
+                     <div class="style-name">홈웨어</div>
+                     <div class="style-desc">편안한 집에서의 휴식</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🚶</span>
+                     <div class="style-name">캐주얼</div>
+                     <div class="style-desc">일상적인 외출룩</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🏃</span>
+                     <div class="style-name">스포츠</div>
+                     <div class="style-desc">가벼운 운동이나 산책</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🎒</span>
+                     <div class="style-name">스트릿</div>
+                     <div class="style-desc">트렌디한 거리 패션</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">📚</span>
+                     <div class="style-name">데일리</div>
+                     <div class="style-desc">학교나 카페에서</div>
+                 </div>
+                 <div class="style-item">
+                     <span class="style-emoji">🌙</span>
+                     <div class="style-name">릴렉스</div>
+                     <div class="style-desc">편안한 저녁 시간</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 마무리 CTA -->
+         <div class="closing-cta">
+             <h2 class="cta-title">당신만의 편안한 일상을 시작하세요</h2>
+             <p class="cta-description">
+                 한 번 입으면 다른 옷은 입기 싫어질 정도로 편안하고 스타일리시한 후드티
+             </p>
+             <div class="cta-highlight">
+                 ✨ 365일 언제나 당신과 함께하는 특별한 아이템 ✨
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>
